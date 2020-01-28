@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /opt/REPONAME/PROJECT_NAME
+source venv/bin/activate
+gunicorn PROJECT_NAME.wsgi:application --workers=6 --bind=127.0.0.1:8000 --log-file=/var/log/PROJECT_NAME/gunicorn.log

@@ -1,0 +1,18 @@
+name: PROJECT_NAME
+
+on: [push]
+
+jobs:
+
+    exec_on_remote:
+        
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: run script
+              uses: fifsky/ssh-action@master
+              with:
+                command: bash update.sh
+                host: ${{ secrets.HOST }}
+                user: root
+                key: ${{ secrets.SSH_KEY}}
