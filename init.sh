@@ -1,7 +1,8 @@
 #!/bin/bash
 
 echo "Importing config.ini..."
-source <(grep = config.ini)
+grep = config.ini > config
+source config
 vars=($(grep -aoP ".*(?=\=)" config.ini))
 for var in ${vars[@]}; do
     if [ -z ${!var} ]; then
@@ -34,7 +35,7 @@ scp -r deploy/update.sh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_HOST:~
 scp -r config.ini -p $REMOTE_PORT $REMOTE_USER@$REMOTE_HOST:~/deploy/
 
 echo "Removing temp files..."
-rm -rf deploy config.ini init.sh README.md
+rm -rf deploy config.ini config init.sh README.md
 
 echo "Creating new README..."
 echo "# $PROJECT_NAME" > README.md
