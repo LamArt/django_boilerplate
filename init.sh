@@ -25,7 +25,7 @@ echo "Changing configs..."
 cd ..
 for file in `ls deploy`; do
     for var in ${vars[@]}; do
-        sed -i "s/$var/${!var}/g" deploy/$file
+        sed -i "s#$var#${!var}#g" deploy/$file
     done    
 done    
 
