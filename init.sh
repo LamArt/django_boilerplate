@@ -20,7 +20,7 @@ pip3 install --quiet -r requirements.txt
 echo "Renaming django project..."
 python manage.py rename project $PROJECT_NAME
 
-echo "Seting up configs..."
+echo "Changing configs..."
 cd ..
 for file in `ls deploy`; do
     for var in ${vars[@]}; do
@@ -29,10 +29,9 @@ for file in `ls deploy`; do
 done    
 
 echo "Deploying on remote host..."
-scp -r deploy $REMOTE_USER@$REMOTE_HOST:~
-scp -r deploy/update.sh $REMOTE_SUER@$REMOTE_HOST:~
-scp -r config.ini $REMOTE_USER@$REMOTE_HOST:~/deploy/
-ssh $REMOTE_USER@$REMOTE_HOST:~ "bash deploy/deploy.sh"
+scp -r deploy -p $REMOTE_PORT $REMOTE_USER@$REMOTE_HOST:~
+scp -r deploy/update.sh -p $REMOTE_PORT $REMOTE_USER@$REMOTE_HOST:~
+scp -r config.ini -p $REMOTE_PORT $REMOTE_USER@$REMOTE_HOST:~/deploy/
 
 echo "Removing temp files..."
 rm -rf deploy config.ini init.sh README.md
@@ -46,3 +45,7 @@ git init -q
 git add -A -q
 git commit -m -q "Initial commit"
 git remote add origin $GITHUB_URL
+git push --set-upstream origin master
+
+echo "Configure remote..."
+ssh $REMOTE_USER@$REMOTE_HOST -p $REMOTE_PORT "bash ~/deploy/deploy.sh"
