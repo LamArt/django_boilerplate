@@ -41,11 +41,11 @@ echo "# $PROJECT_NAME" > README.md
 
 echo "Creating git..."
 rm -rf .git
-git init -q
-git add -A -q
-git commit -m -q "Initial commit"
+git init
+git add -A
+git commit -m "Initial commit" > /dev/null
 git remote add origin $GITHUB_URL
-git push --set-upstream origin master
+git push -q --set-upstream origin master
 
 echo "Configure remote..."
 ssh $REMOTE_USER@$REMOTE_HOST -p $REMOTE_PORT "bash ~/deploy/deploy.sh"
