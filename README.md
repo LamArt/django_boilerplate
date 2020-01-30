@@ -15,7 +15,9 @@ cd your_project_name
 
 ## Edit config.ini file
 [PROJECT] - settings related to project's naming
+
 [SSH] - info of remote host
+
 [GIT] - url to repo you've created
 
 ## Run init.sh
