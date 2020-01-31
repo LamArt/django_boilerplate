@@ -1,29 +1,37 @@
 # Boilerplate for django
 
-Prepare your repo for django dev. Configure remote host. 
+1. Подгтовка репозитория к разработке с использованием django.
+2. Настройка удаленной машины.
 
-Use `git bash` on windows.
+Используйте `git bash` на Windows.
 
-## Create new empty repo on github
-Just create it
+## Инструкция
+### Создать пустой репозиторий
+Обязательно пустой.
 
-## Clone this repo
+## Склонировать этот репозиторий
 ```
-git clone https://github.com/Vladius25/django_boilerplate.git your_project_name
+git clone git@github.com:Vladius25/django_boilerplate.git your_project_name
 cd your_project_name
 ```
 
-## Edit config.ini file
-[PROJECT] - settings related to project's naming
+## Отредактировать config.ini
+[PROJECT] - настройки, связанные с именованием проекта
 
-[SSH] - info of remote host
+[SSH] - настройки, для подключения к удаленному хосту
 
-[GIT] - url to repo you've created
+[GIT] - ссылка на `созданный` репозиторий
+**Важно**. Ссылка обязательно должна начинаться с `git`, а не с `https`.
 
-## Run init.sh
+## Запуск init.sh
 ```
 ./init.sh
 ```
+Или без настройки удаленного хоста:
+```
+./init.sh --no-remote
+```
+**Важно**. Во время установки будет продложено добавить указанный ключ в deploy keys(настройки репо -> deploy keys). Это нужно для того, чтобы клонировать и получать измения без пароля.
 
-## Configure repo on github
-Add secrets and deploy key for CI.
+## Настройка репозитоия и CI.
+Так же этот ключ нужно доавбить в secrets под именем SSH_KEY(настройки репо -> secrets), а в secrets под именем HOST - адрес хоста. И, конечно, в netangels. Это нужно для работы CI.  
