@@ -16,13 +16,15 @@ done
 echo "Creating venv..."
 mv project $PROJECT_NAME
 cd $PROJECT_NAME
-cat ../deploy/settings.py >> project/settings.py
 python3 -mvenv venv 2>/dev/null || py -mvenv venv                        #<-- hack for windows
 source venv/bin/activate 2>/dev/null || source venv/Scripts/activate     #<-- hack for windows
+
+echo "Installing requirements..."
 pip3 install --quiet -r requirements.txt
 
-echo "Renaming django project..."
-python manage.py rename project $PROJECT_NAME
+echo "Creating django project..."
+django-admin startproject $PROJECT_NAME . 
+cat ../deploy/settings.py >> $PROJECT_NAME/settings.py
 
 echo "Changing configs..."
 cd ..
