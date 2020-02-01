@@ -1,6 +1,6 @@
-# Boilerplate for django
+# Boilerplate for Django
 
-1. Подготовка репозитория к разработке на django.
+1. Подготовка репозитория к разработке на Django.
 2. Настройка удаленной машины.
 
 Используйте `git bash` на Windows.
@@ -11,7 +11,7 @@
 
 ## Склонировать этот репозиторий
 ```
-git clone git@github.com:Vladius25/django_boilerplate.git your_project_name
+git clone git@github.com:IlyaBat9/django_boilerplate.git your_project_name
 cd your_project_name
 ```
 
@@ -33,7 +33,7 @@ cd your_project_name
 ```
 ./init.sh --no-remote
 ```
-**Важно**. Во время установки будет продложено добавить указанный ключ в deploy keys(настройки репо -> deploy keys). Это нужно для того, чтобы клонировать и получать измения без пароля.
+**Важно**. Во время установки будет предложено добавить указанный ключ в deploy keys (Settings -> Deploy keys). Это нужно для того, чтобы клонировать и получать измения без пароля.
 
 ## Настройка репозитория и CI
-Так же этот ключ нужно добавить в secrets под именем SSH_KEY(настройки репо -> secrets), а в secrets под именем HOST - адрес хоста. И, конечно, в netangels. Это нужно для работы CI.  
+Также этот ключ нужно добавить в secrets под именем SSH_KEY (Settings -> Secrets), а в secrets под именем HOST - адрес хоста. И, конечно, в netangels. Это нужно для работы CI.  
