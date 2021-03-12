@@ -11,7 +11,7 @@
 
 ## Склонировать этот репозиторий
 ```
-git clone git@github.com:IlyaBat9/django_boilerplate.git your_project_name
+git clone git@github.com:LamArt/django_boilerplate.git your_project_name
 cd your_project_name
 ```
 
